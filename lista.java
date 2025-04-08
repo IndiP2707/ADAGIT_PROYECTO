@@ -144,7 +144,22 @@ public class lista {
             aux.siguiente.anterior = aux.anterior;
         }
     }
-    
-    
+        public DefaultListModel buscarXfecha(String fecha) {
+        DefaultListModel model = new DefaultListModel();
+        reserva aux2 = primero; 
+        int index = 0;
+        
+        while(aux2 != null) {
+            if(aux2.getFecha().equals(fecha)) { 
+                JOptionPane.showMessageDialog(null, "La reserva está a nombre de "+ aux2.getCliente()+ "\n Lugar de destino es " + aux2.getDestino() +"\n Reservado para el día " + aux2.getFecha());
+                break;
+            }
+            model.add(index, aux2);
+            aux2 = aux2.siguiente;
+            index++;
+        }
+        
+        return model;
+    } 
     
 }

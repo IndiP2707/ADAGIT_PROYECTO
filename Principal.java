@@ -185,6 +185,8 @@ public class Principal extends JFrame {
 		btnBuscarCita.setForeground(new Color(0, 128, 192));
 		btnBuscarCita.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String fechaa = JOptionPane.showInputDialog(btnBuscarCita, "dime la fecha ");
+				DefaultListModel modeloLleno=lista1.buscarXfecha(fechaa);
 				
 			}
 		});
