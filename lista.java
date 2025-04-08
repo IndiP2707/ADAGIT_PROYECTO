@@ -95,6 +95,55 @@ public class lista {
         }
         return null;
     }
+        public void eliminarAlFinal(reserva nuevo) {
+        if(primero == null) {
+            return; 
+        }
+        
+        if(primero == ultimo) {
+            primero = ultimo = null;
+        } else {
+            ultimo = ultimo.anterior;
+            ultimo.siguiente = null;
+        }
+    }
+
+    public void EliminarPrimero(reserva nuevo) {
+        if(primero == null) {
+            return; 
+        }
+        
+        if(primero == ultimo) {
+            primero = ultimo = null;
+        } else {
+            primero = primero.siguiente;
+            primero.anterior = null;
+        }
+    }
+
+    public void EliminarEnmedio(reserva nuevo) {
+        if(primero == null) {
+            return;
+        }
+        
+        reserva aux = primero; 
+        while(aux != null && !aux.getCliente().equals(nuevo.getCliente())) {
+            aux = aux.siguiente;
+        }
+        
+        if(aux == null) {
+            return; 
+        }
+        
+        if(aux == primero) {
+            EliminarPrimero(nuevo);
+        } else if(aux == ultimo) {
+            eliminarAlFinal(nuevo);
+        } else {
+            aux.anterior.siguiente = aux.siguiente;
+            aux.siguiente.anterior = aux.anterior;
+        }
+    }
     
     
     

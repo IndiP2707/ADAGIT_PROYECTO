@@ -194,7 +194,35 @@ public class Principal extends JFrame {
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		       
+				int selectedIndex = list.getSelectedIndex();
+		        if (selectedIndex != -1) {
+
+		            String selectedItem = modelocitas.getElementAt(selectedIndex).toString();
+		            String[] parts = selectedItem.split("--");
+		            String clienteSeleccionado = parts[0];
+		            
+
+		            reserva temp = new reserva(clienteSeleccionado, "", 0, "");
+		            
+		            // remover linked list
+		            if (clienteSeleccionado.equals(lista1.primero.getCliente())) {
+		                lista1.EliminarPrimero(temp);
+		            } else if (clienteSeleccionado.equals(lista1.ultimo.getCliente())) {
+		                lista1.eliminarAlFinal(temp);
+		            } else {
+		                lista1.EliminarEnmedio(temp);
+		            }
+		            
+		            // Remove from the list model
+		            modelocitas.remove(selectedIndex);
+		            indice--;
+		            
+		            JOptionPane.showMessageDialog(null, "Reserva eliminada correctamente");
+		        } else {
+		            JOptionPane.showMessageDialog(null, "Por favor seleccione una reserva para eliminar", 
+		                                         "Error", JOptionPane.ERROR_MESSAGE);
+		        }
+  
 			}
 		});
 		btnEliminar.setForeground(new Color(0, 128, 192));
