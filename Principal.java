@@ -140,6 +140,39 @@ public class Principal extends JFrame {
 		Buttonreservar.setForeground(new Color(0, 128, 192));
 		Buttonreservar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String cliente1 = textcliente.getText();
+		        String servicio1 = comboBox.getSelectedItem().toString();
+		        float precio1 = Float.parseFloat(textprecio.getText());
+		        String fecha1 = textfecha.getText();
+
+		        reserva nuevo = new reserva(cliente1, servicio1, precio1, fecha1);
+		        lista1.insertaordenadamente(nuevo);
+		        
+		        // Limpiar el modelo actual
+		        modelocitas.clear();
+		        
+		        // Recorrer la lista enlazada ordenada y añadir al modelo del JList
+		        reserva temp = lista1.primero;
+		        indice = 0;
+		        while (temp != null) {
+		            String listaa = temp.getCliente() + "--" + temp.getFecha();
+		            modelocitas.add(indice, listaa);
+		            indice++;
+		            temp = temp.siguiente;
+		        }
+		        
+		        textcliente.setText("");
+		        textprecio.setText("");
+		        textfecha.setText("");
+
+				/*
+
+				String listaa = cliente1+"--"+fecha1;
+				modelocitas.add(indice, listaa);
+				indice++;
+				textcliente.setText("");
+				textprecio.setText("");
+				textfecha.setText("");*/
 				
 			}
 		});
