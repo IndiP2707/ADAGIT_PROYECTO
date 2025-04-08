@@ -1,5 +1,8 @@
 package GIT;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 public class lista {
     reserva primero = null;
     reserva ultimo = null;
